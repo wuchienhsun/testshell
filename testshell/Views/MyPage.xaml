@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:testshell.ViewModels" xmlns:model="clr-namespace:testshell.Models"
+    x:Class="testshell.Views.MyPage">
+    <ContentPage.BindingContext>
+        <viewmodels:MyViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ListView
+            CachingStrategy="RecycleElement"
+            BackgroundColor="Transparent"
+                  ItemsSource="{Binding LoanGroups}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  IsGroupingEnabled="True"
+                  GroupDisplayBinding="{Binding Key}"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  RefreshControlColor="DarkRed"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Loan">
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Favorite" />
+                            <MenuItem Text="Delete" IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20"
+                                   BorderColor="Gray"
+                                   HasShadow="True"
+                                   OutlineColor="Gray"
+                                   Margin="10, 10, 10, -10"
+                                   >
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout HorizontalOptions="StartAndExpand">
+                                            <Label Text="{Binding Name}"
+                                                FontSize="Large"
+                                                TextColor="Blue"
+                                                   FontAttributes="Bold"
+                                                VerticalOptions="Start"
+                                                />
+                                            <Label Text="{Binding Amount}"
+                                                FontSize="Large"
+                                                TextColor="Black"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label Text="{Binding Date}"
+                                                FontSize="Large"
+                                                VerticalOptions="Center" />
+                                            <Label Text=">"
+                                                FontSize="Large"
+                                                HorizontalOptions="End" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Grid Padding="0" Margin="0" VerticalOptions="EndAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="0.2*"  />
+                                                <ColumnDefinition Width="0.8*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Margin="0"
+                                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                                               Grid.Row="0" Grid.Column="0" BackgroundColor="Blue"/>
+                                            <Label Margin="0"
+                                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                                               Grid.Row="0" Grid.Column="1" BackgroundColor="Gray" />
+                                        </Grid>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal">
+                    <Label BackgroundColor="Blue"
+                           Text="header"
+                           TextColor="Olive"
+                           />
+                </StackLayout>
+            </ListView.Header>
+            <ListView.Footer>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Load more" />
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
