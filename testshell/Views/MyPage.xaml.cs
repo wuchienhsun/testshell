@@ -1,6 +1,4 @@
-﻿using System.Windows.Input;
-using testshell.Models;
-using testshell.ViewModels;
+﻿using testshell.ViewModels;
 using Xamarin.Forms;
 
 namespace testshell.Views
@@ -13,27 +11,11 @@ namespace testshell.Views
             BindingContext = new MyViewModel();
         }
 
-        //private async void ListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
-        //{
-        //    var coffee = ((ListView)sender).SelectedItem as Coffee;
-        //    if (coffee == null)
-        //        return;
+        async void MenuItem_Clicked(System.Object sender, System.EventArgs e)
+        {
 
-        //    await DisplayAlert("coffee selected", coffee.Name, "OK");
-        //}       
+            await Navigation.PushAsync(new LoanDetail());
 
-        //void ListView_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
-        //{
-        //    ((ListView)sender).SelectedItem = null;
-        //}
-
-        //async void MenuItem_Clicked(System.Object sender, System.EventArgs e)
-        //{
-        //    var coffee = ((MenuItem)sender).BindingContext as Coffee;
-        //    if (coffee == null)
-        //        return;
-
-        //    await DisplayAlert("coffee Favorited", coffee.Name, "OK");
-        //}
+        }
     }
 }

@@ -31,8 +31,6 @@
 
     <TabBar>
         <ShellContent Title="MyPage" Icon="icon_about.png" Route="MyPage" ContentTemplate="{DataTemplate local:MyPage}" />
-    </TabBar>
-    <TabBar>
-        <ShellContent Title="MyPage" Icon="icon_about.png" Route="MyPage" ContentTemplate="{DataTemplate local:MyPage}" />
+        <ShellContent Title="Loan Detail" Icon="icon_about.png" Route="LoanDetail" ContentTemplate="{DataTemplate local:LoanDetail}" />
     </TabBar>
 </Shell>

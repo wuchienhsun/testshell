@@ -9,6 +9,7 @@ namespace testshell
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(MyPage), typeof(MyPage));
+            Routing.RegisterRoute(nameof(LoanDetail), typeof(LoanDetail));
         }
 
     }

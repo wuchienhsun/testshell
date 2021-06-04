@@ -2,29 +2,29 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:testshell.ViewModels" xmlns:model="clr-namespace:testshell.Models"
-    x:Class="testshell.Views.MyPage">
+    x:Class="testshell.Views.LoanDetail">
     <ContentPage.BindingContext>
-        <viewmodels:MyViewModel />
+        <viewmodels:LoanDeatilViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <!--IsGroupingEnabled="True"
+                  GroupDisplayBinding="{Binding Key}"-->
         <ListView
             CachingStrategy="RecycleElement"
             BackgroundColor="Transparent"
-                  ItemsSource="{Binding LoanGroups}"
+                  ItemsSource="{Binding Loan_repayment}"
                   HasUnevenRows="True"
                   SeparatorVisibility="None"
-                  IsGroupingEnabled="True"
-                  GroupDisplayBinding="{Binding Key}"
                   IsPullToRefreshEnabled="True"
                   IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                   RefreshCommand="{Binding RefreshCommand}"
                   RefreshControlColor="DarkRed"
                   >
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:Loan">
+                <DataTemplate x:DataType="model:Loan_repayment">
                     <ViewCell>
                         <ViewCell.ContextActions>
-                            <MenuItem Text="go" Clicked="MenuItem_Clicked"/>
+                            <MenuItem Text="Favorite" />
                             <MenuItem Text="Delete" IsDestructive="True"/>
                         </ViewCell.ContextActions>
                         <Grid Padding="10">
@@ -37,19 +37,19 @@
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <StackLayout HorizontalOptions="StartAndExpand">
-                                            <Label Text="{Binding Name}"
+                                            <Label Text="{Binding loan.Name}"
                                                 FontSize="Large"
                                                 TextColor="Blue"
                                                    FontAttributes="Bold"
                                                 VerticalOptions="Start" />
-                                            <Label Text="{Binding Amount}"
+                                            <Label Text="{Binding loan.Amount}"
                                                 FontSize="Large"
                                                 TextColor="Black"
                                                 FontAttributes="Bold"
                                                 VerticalOptions="Center"/>
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="EndAndExpand">
-                                            <Label Text="{Binding Date}"
+                                            <Label Text="{Binding loan.Date}"
                                                 FontSize="Large"
                                                 VerticalOptions="Center" />
                                             <Label Text=">"
@@ -73,6 +73,30 @@
                                                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                                                Grid.Row="0" Grid.Column="1" BackgroundColor="Gray" />
                                         </Grid>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label Text="{Binding repayment.actualRepaymentDate}"
+                                                FontSize="Large"
+                                                TextColor="Blue"
+                                                   FontAttributes="Bold"
+                                                VerticalOptions="Start" />
+                                                <Label Text="{Binding repayment.Amount}"
+                                                FontSize="Large"
+                                                TextColor="Black"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="{Binding repayment.repaymentDate}"
+                                                FontSize="Large"
+                                                VerticalOptions="Center" />
+                                                <Label Text=">"
+                                                FontSize="Large"
+                                                HorizontalOptions="End" />
+                                            </StackLayout>
+                                        </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>
