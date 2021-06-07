@@ -27,10 +27,10 @@ namespace testshell.ViewModels
             Loan = new ObservableRangeCollection<Loan>();
             LoanGroups = new ObservableRangeCollection<Grouping<string, Loan>>();
 
-            Loan.Add(new Loan { Id = ">", Name = "# Loan 1", Amount = "$1,000", Date = "2020/10/24" });
-            Loan.Add(new Loan { Id = ">", Name = "# Loan 2", Amount = "$5,000", Date = "2020/10/26" });
-            Loan.Add(new Loan { Id = ">", Name = "# Loan 3", Amount = "$10,000", Date = "2020/10/22" });
-            Loan.Add(new Loan { Id = ">", Name = "# Loan 4", Amount = "$2,000", Date = "2020/10/01" });
+            Loan.Add(new Loan { Id = ">", Name = "# Loan 1", Amount = "$1,000", Date = "2020/10/24", InterestRate = "19%", Period = "3" });
+            Loan.Add(new Loan { Id = ">", Name = "# Loan 2", Amount = "$5,000", Date = "2020/10/26", InterestRate = "19%", Period = "3" });
+            Loan.Add(new Loan { Id = ">", Name = "# Loan 3", Amount = "$10,000", Date = "2020/10/22", InterestRate = "19%", Period = "3" });
+            Loan.Add(new Loan { Id = ">", Name = "# Loan 4", Amount = "$2,000", Date = "2020/10/01", InterestRate = "19%", Period = "3" });
             LoanGroups.Add(new Grouping<string, Loan>("Loan group 1", new[] { Loan[2] }));
             LoanGroups.Add(new Grouping<string, Loan>("Loan group 1", Loan.Take(2)));
 
